@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Korone Musix</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header class="header">
+    <button onclick="history.back()">← Back</button>
+</header>
+
+<main class="card">
+    <h2 id="name"></h2>
+
+    <p>ID: <span id="id"></span></p>
+
+    <button id="copy">Copy Name</button>
+
+    <p>
+        URL:
+        <a id="url" target="_blank"></a>
+    </p>
+</main>
+
+<script>
+const owner = "iamdaven";
+const repo = "Korone-Music-Repository";
+
+const file = new URLSearchParams(location.search).get("file");
+
+async function load() {
+    const res = await fetch(
+        `https://api.github.com/repos/${owner}/${repo}/contents/entries/${file}`
+    );
+
+    const data = await res.json();
+    const text = atob(data.content);
+
+    const name = text.match(/name:\s*(.+)/i)?.[1] || "";
+    const id = text.match(/id:\s*(.+)/i)?.[1] || "";
+    const url = text.match(/url:\s*(.+)/i)?.[1] || "";
+
+    document.getElementById("name").textContent = name;
+    document.getElementById("id").textContent = id;
+
+    const a = document.getElementById("url");
+    a.href = url;
+    a.textContent = url;
+
+    document.getElementById("copy").onclick = () => {
+        navigator.clipboard.writeText(name);
+    };
+}
+
+load();
+</script>
+
+</body>
+</html>
