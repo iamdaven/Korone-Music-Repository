@@ -1,5 +1,6 @@
 const owner = "iamdaven";
 const repo = "Korone-Music-Repository";
+const BASE = "/Korone-Music-Repository";
 
 let songs = [];
 
@@ -30,15 +31,16 @@ async function loadSongs() {
 function render(list) {
     const box = document.getElementById("results");
 
-    box.innerHTML = list.map(song => `
-        <div class="entry" onclick="openSong('${song.file}')">
-            ${song.name}
+    box.innerHTML = list.map(s => `
+        <div class="entry" onclick="openSong('${s.file}')">
+            ${s.name}
         </div>
     `).join("");
 }
 
 function openSong(file) {
-    location.href = `music/index.html?file=${encodeURIComponent(file)}`;
+    location.href =
+        `${BASE}/music/index.html?file=${encodeURIComponent(file)}`;
 }
 
 document.getElementById("search").addEventListener("input", e => {
