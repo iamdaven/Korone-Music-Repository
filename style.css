@@ -1,0 +1,55 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #c0c0c0;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    background: navy;
+    color: white;
+    padding: 10px;
+    border-bottom: 3px solid black;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#search {
+    width: 100%;
+    margin-top: 10px;
+    padding: 8px;
+    border: inset 2px gray;
+}
+
+.results {
+    padding: 10px;
+}
+
+.entry {
+    background: white;
+    margin: 6px 0;
+    padding: 10px;
+    border: 2px outset gray;
+    cursor: pointer;
+}
+
+.entry:hover {
+    background: #ffffcc;
+}
+
+.card {
+    margin: 20px;
+    padding: 20px;
+    background: white;
+    border: 2px outset gray;
+}
+
+button {
+    padding: 6px;
+    border: 2px outset gray;
+    cursor: pointer;
+}
